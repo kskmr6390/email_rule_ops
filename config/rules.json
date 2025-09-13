@@ -1,0 +1,118 @@
+{
+  "rules": [
+    {
+      "name": "Newsletter Auto-Archive",
+      "description": "Automatically archive newsletters from specific senders",
+      "predicate": "All",
+      "conditions": [
+        {
+          "field": "From",
+          "predicate": "contains",
+          "value": "newsletter"
+        },
+        {
+          "field": "Subject",
+          "predicate": "contains",
+          "value": "newsletter"
+        }
+      ],
+      "actions": [
+        {
+          "type": "mark as read",
+          "value": ""
+        },
+        {
+          "type": "move message",
+          "value": "Newsletters"
+        }
+      ]
+    },
+    {
+      "name": "Old Unread Emails",
+      "description": "Mark old unread emails as read",
+      "predicate": "Any",
+      "conditions": [
+        {
+          "field": "Received Date/Time",
+          "predicate": "less than",
+          "value": "30 days"
+        }
+      ],
+      "actions": [
+        {
+          "type": "mark as read",
+          "value": ""
+        }
+      ]
+    },
+    {
+      "name": "Important Emails",
+      "description": "Mark emails with 'urgent' or 'important' as unread",
+      "predicate": "Any",
+      "conditions": [
+        {
+          "field": "Subject",
+          "predicate": "contains",
+          "value": "urgent"
+        },
+        {
+          "field": "Subject",
+          "predicate": "contains",
+          "value": "important"
+        },
+        {
+          "field": "Message",
+          "predicate": "contains",
+          "value": "urgent"
+        }
+      ],
+      "actions": [
+        {
+          "type": "mark as unread",
+          "value": ""
+        },
+        {
+          "type": "move message",
+          "value": "Important"
+        }
+      ]
+    },
+    {
+      "name": "Social Media Notifications",
+      "description": "Archive social media notifications",
+      "predicate": "Any",
+      "conditions": [
+        {
+          "field": "From",
+          "predicate": "contains",
+          "value": "facebook"
+        },
+        {
+          "field": "From",
+          "predicate": "contains",
+          "value": "twitter"
+        },
+        {
+          "field": "From",
+          "predicate": "contains",
+          "value": "linkedin"
+        },
+        {
+          "field": "From",
+          "predicate": "contains",
+          "value": "instagram"
+        }
+      ],
+      "actions": [
+        {
+          "type": "mark as read",
+          "value": ""
+        },
+        {
+          "type": "move message",
+          "value": "Social Media"
+        }
+      ]
+    }
+  ]
+}
