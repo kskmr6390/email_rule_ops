@@ -28,6 +28,10 @@ A standalone Python script that integrates with Gmail API and performs rule-base
    git clone https://github.com/kskmr6390/email_rule_ops.git
    cd emails_rule_ops
    ```
+   
+   ```bash
+   cd emails_rule_ops
+   ```
 
 2. ** Create a virtual env & Install dependencies**:
    ```bash
