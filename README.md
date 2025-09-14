@@ -209,27 +209,29 @@ python main.py [options]
    ```bash
    python main.py --process-rules
    ```
-##  Flow Diagram
+## Flow Diagram
 
+```mermaid
 flowchart TD
-    A[Start] --> B[Initialize Application]
-    B --> C[Load Configuration]
-    C --> D[Authenticate with Gmail API]
-    D --> E[Fetch Emails]
-    E --> F[Store Emails in Database]
-    F --> G[Load Rules from JSON]
-    G --> H[Evaluate Rules]
-    H --> I[Execute Actions]
-    I --> J[Log Rule Execution]
-    J --> K[End]
+   A([Start]) --> B[Initialize Application]
+   B --> C[Load Configuration]
+   C --> D[Authenticate with Gmail API]
+   D --> E[Fetch Emails]
+   E --> F[Store Emails in Database]
+   F --> G[Load Rules from JSON]
+   G --> H[Evaluate Rules]
+   H --> I[Execute Actions]
+   I --> J[Log Rule Execution]
+   J --> K([End])
 
-    subgraph "Error Handling"
-        D --> L[Handle Authentication Errors]
-        E --> M[Handle API Errors]
-        F --> N[Handle Database Errors]
-        H --> O[Handle Rule Evaluation Errors]
-        I --> P[Handle Action Execution Errors]
-    end
+   subgraph Error_Handling [Error Handling]
+      D -.-> L[Handle Authentication Errors]
+      E -.-> M[Handle API Errors]
+      F -.-> N[Handle Database Errors]
+      H -.-> O[Handle Rule Evaluation Errors]
+      I -.-> P[Handle Action Execution Errors]
+   end
+```
 
 ## Database Schema
 
