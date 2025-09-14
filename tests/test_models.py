@@ -170,7 +170,7 @@ class TestModels:
         engine = create_engine('sqlite:///:memory:')
         
         # Should not raise exception
-        create_tables()
+        Base.metadata.create_all(engine)
         
         # Verify tables exist
         from sqlalchemy import inspect

@@ -48,7 +48,7 @@ This project implements a standalone Python script that integrates with Gmail AP
 - Supports Gmail API v1 with modify scope
 
 ### ✅ Database Storage
-- Relational database support (PostgreSQL, MySQL, SQLite)
+- Relational database support (PostgreSQL, SQLite)
 - Email table with all required fields
 - Rule execution tracking table
 - Proper indexing and relationships

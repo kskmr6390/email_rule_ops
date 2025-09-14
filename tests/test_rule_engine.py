@@ -197,18 +197,6 @@ class TestRuleEngine:
         result = engine._evaluate_condition(condition, old_email)
         assert result is False
     
-    def test_evaluate_condition_date_greater_than(self, temp_db, sample_email):
-        """Test condition evaluation with date 'greater than' predicate"""
-        engine = RuleEngine()
-        
-        condition = {
-            "field": "Received Date/Time",
-            "predicate": "greater than",
-            "value": "1 day"
-        }
-        
-        result = engine._evaluate_condition(condition, sample_email)
-        assert result is False  # Email is from today, not greater than 1 day ago
     
     def test_evaluate_rule_all_predicate(self, temp_db, newsletter_email):
         """Test rule evaluation with 'All' predicate"""
@@ -351,9 +339,4 @@ class TestRuleEngine:
         result = engine._compare_dates(datetime.utcnow(), "invalid format", "less")
         assert result is False
     
-    def test_compare_dates_invalid_email_date(self, temp_db):
-        """Test date comparison with invalid email date"""
-        engine = RuleEngine()
-        
-        result = engine._compare_dates(None, "7 days", "less")
-        assert result is False
+

@@ -7,7 +7,7 @@ A standalone Python script that integrates with Gmail API and performs rule-base
 ## Features
 
 - **Gmail API Integration**: Authenticates with Gmail using OAuth2
-- **Email Storage**: Stores emails in a relational database (PostgreSQL/MySQL/SQLite)
+- **Email Storage**: Stores emails in a relational database (PostgreSQL/SQLite)
 - **Rule Engine**: Processes emails based on configurable JSON rules
 - **Flexible Conditions**: Support for various field types and predicates
 - **Multiple Actions**: Mark as read/unread, move messages to folders
@@ -19,14 +19,13 @@ A standalone Python script that integrates with Gmail API and performs rule-base
 - Python 3.7+
 - Gmail account with API access
 - Google Cloud Console project with Gmail API enabled
-- Database (PostgreSQL, MySQL, or SQLite)
+- Database (PostgreSQL, or SQLite)
 
 ## Installation
 
 1. **Clone the repository**:
    ```bash
    git clone https://github.com/kskmr6390/email_rule_ops.git
-   cd emails_rule_ops
    ```
    
    ```bash
@@ -210,6 +209,27 @@ python main.py [options]
    ```bash
    python main.py --process-rules
    ```
+##  Flow Diagram
+
+flowchart TD
+    A[Start] --> B[Initialize Application]
+    B --> C[Load Configuration]
+    C --> D[Authenticate with Gmail API]
+    D --> E[Fetch Emails]
+    E --> F[Store Emails in Database]
+    F --> G[Load Rules from JSON]
+    G --> H[Evaluate Rules]
+    H --> I[Execute Actions]
+    I --> J[Log Rule Execution]
+    J --> K[End]
+
+    subgraph "Error Handling"
+        D --> L[Handle Authentication Errors]
+        E --> M[Handle API Errors]
+        F --> N[Handle Database Errors]
+        H --> O[Handle Rule Evaluation Errors]
+        I --> P[Handle Action Execution Errors]
+    end
 
 ## Database Schema
 
@@ -259,7 +279,7 @@ The application logs all operations to both console and file (`gmail_rules.log` 
 2. **Database Connection Error**:
    - Verify database credentials in `.env`
    - Ensure database server is running
-   - Check database exists (for PostgreSQL/MySQL)
+   - Check database exists (for PostgreSQL)
 
 3. **Permission Errors**:
    - Ensure Gmail API has necessary scopes
